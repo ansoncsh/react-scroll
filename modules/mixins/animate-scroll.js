@@ -6,7 +6,11 @@ import events from './scroll-events';
 /*
  * Gets the easing type from the smooth prop within options.
  */
-const getAnimationType = (options) => smooth[options.smooth] || smooth.defaultEasing;
+const getAnimationType = (options) => {
+  if(typeof options.smooth === 'function')
+    return options.smooth
+  return smooth[options.smooth] || smooth.defaultEasing;
+}
 /*
  * Function helper
  */
